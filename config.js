@@ -11,12 +11,12 @@ var path = require('path'),
 // ------------------------------------------------------------------------
 // If the App Setting 'websiteUrl' is set, Ghost will use that URL as base.
 // If it isn't set, we'll go with the default sitename.
-if (!websiteUrl || websiteUrl === '' ||  websiteUrl.length === 0) {
+if (!websiteUrl || websiteUrl === '' || websiteUrl.length === 0) {
     websiteUrl = 'http://' + process.env.siteName + '.azurewebsites.net';
     console.log(websiteUrl);
 }
 
-if (!websiteUrlSSL || websiteUrlSSL === '' ||  websiteUrlSSL.length === 0) {
+if (!websiteUrlSSL || websiteUrlSSL === '' || websiteUrlSSL.length === 0) {
     //in prod mode - forceSSL is true - so we can use the azure issued cert
     // web apps supply some default env variables - WEBSITE_SITE_NAME and WEBSITE_HOSTNAME
     // represent the siteName and the full DNS name respectively.
@@ -32,17 +32,27 @@ config = {
         url: websiteUrl,
 
         // Visit http://support.ghost.org/mail for instructions
-         mail: {
-             transport: 'SMTP',
-             options: {
-                 service: process.env.emailService,
-                 auth: {
-                     user: process.env.emailUsername, // mailgun username
-                     pass: process.env.emailPassword  // mailgun password
-                 }
-             },
-             from: process.env.emailFromAddress // 'from' address when sending emails
-         },
+        mail: {
+            transport: 'SMTP',
+            options: {
+                service: process.env.emailService,
+                auth: {
+                    user: process.env.emailUsername, // mailgun username
+                    pass: process.env.emailPassword  // mailgun password
+                }
+            },
+            from: process.env.emailFromAddress // 'from' address when sending emails
+        },
+
+        storage: {
+            active: 'ghost-azure-storage',
+            'ghost-azure-storage': {
+                //connectionString: 'YourConnectionStringHere',
+                container: 'nathan-dev-assets',
+                //cdnUrl: "YourCDNEndpointDomain",
+                //useHttps : "UseHttpsInEndpoint" //Optional: CDN protocol. Defaults to http if omitted. Set to "true", to enable.
+            }
+        },
 
         database: {
             client: 'sqlite3',
@@ -72,15 +82,24 @@ config = {
 
         // Visit http://support.ghost.org/mail for instructions
         mail: {
-         transport: 'SMTP',
-         options: {
-             service: process.env.emailService,
-             auth: {
-                 user: process.env.emailUsername, // mailgun username
-                 pass: process.env.emailPassword  // mailgun password
-             }
-         },
-         from: process.env.emailFromAddress // 'from' address when sending emails
+            transport: 'SMTP',
+            options: {
+                service: process.env.emailService,
+                auth: {
+                    user: process.env.emailUsername, // mailgun username
+                    pass: process.env.emailPassword  // mailgun password
+                }
+            },
+            from: process.env.emailFromAddress // 'from' address when sending emails
+        },
+        storage: {
+            active: 'ghost-azure-storage',
+            'ghost-azure-storage': {
+                //connectionString: 'YourConnectionStringHere',
+                container: 'nathan-dev-assets',
+                //cdnUrl: "YourCDNEndpointDomain",
+                //useHttps : "UseHttpsInEndpoint" //Optional: CDN protocol. Defaults to http if omitted. Set to "true", to enable.
+            }
         },
         database: {
             client: 'sqlite3',
@@ -125,11 +144,11 @@ config = {
         database: {
             client: 'mysql',
             connection: {
-                host     : '127.0.0.1',
-                user     : 'root',
-                password : '',
-                database : 'ghost_testing',
-                charset  : 'utf8'
+                host: '127.0.0.1',
+                user: 'root',
+                password: '',
+                database: 'ghost_testing',
+                charset: 'utf8'
             }
         },
         server: {
@@ -146,11 +165,11 @@ config = {
         database: {
             client: 'pg',
             connection: {
-                host     : '127.0.0.1',
-                user     : 'postgres',
-                password : '',
-                database : 'ghost_testing',
-                charset  : 'utf8'
+                host: '127.0.0.1',
+                user: 'postgres',
+                password: '',
+                database: 'ghost_testing',
+                charset: 'utf8'
             }
         },
         server: {
