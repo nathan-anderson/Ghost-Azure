@@ -1,0 +1,34 @@
+.navigation-container{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: $small-padding;
+
+  li {
+    width: 50%;
+    padding: $small-padding;
+    text-align: center;
+    color: $secondary-colour;
+    list-style-type: none;
+    margin: $small-padding;
+
+    @include mq-desktop {
+      &:hover {
+        color: $primary-colour;
+        transition: 0.2s
+      }
+    };
+  }
+}
+
+.blog-title-background {
+  background-color: $primary-colour;
+  width: 100%;
+
+  h1 {
+    padding: $small-padding;
+    font-size: $small-header;
+    background-color: inherit;
+    text-align: center;
+  }
+}

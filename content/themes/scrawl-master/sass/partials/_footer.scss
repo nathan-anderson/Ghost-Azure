@@ -1,0 +1,50 @@
+.footer-container {
+  background-color: $secondary-colour;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: flex-end;
+
+  .social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $primary-colour;
+    background-color: inherit;
+    font-size: 2em;
+    color: $primary-colour;
+    padding: 0.1em;
+    margin: $small-padding;
+
+    @include mq-desktop {
+      &:hover {
+        color: $background-colour;
+        border-color: $background-colour;
+        transition: 0.2s;
+      }
+    };
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
+.theme-info {
+  @include mq-phone {
+    display: none;
+  };
+
+  @include mq-not-phone {
+    color: $tertiary-colour;
+    background-color: $background-colour;
+    text-align: right;
+    font-size: $tiny-text;
+    padding: $medium-padding;
+    width: 100%;
+    order: 1;
+
+    a {
+      border-bottom: 1px solid $tertiary-colour;
+    }
+};
+}

@@ -1,0 +1,41 @@
+{{#is "tag"}}
+  {{#tag}}
+    <div class="tag-title"><h3>Posts tagged "{{name}}"</h3></div>
+  {{/tag}}
+{{/is}}
+{{#foreach posts}}
+<time class="excerpt-date" datetime="{{date format='YYYY-MM-DD'}}">
+  {{date format="YYYY MMM DD"}}
+</time>
+  <div class="post-wrapper">
+    {{#if image}}
+        <a class="excerpt-image" style="background-image:url({{image}})" href="{{url}}">
+        </a>
+    {{/if}}
+      <div class="post-excerpt">
+        <a class="date-time" href="{{url}}">
+          <time class="excerpt-date-phone" datetime="{{date format='YYYY-MM-DD'}}">
+            {{date format="YYYY MMM DD"}}
+          </time>
+          <div class="time-to-read">
+            <div class="content-string">
+              {{excerpt words="50000"}}
+            </div>
+          </div>
+        </a>
+        <a class="excerpt-title" href="{{url}}">
+          <h2>{{title}}</h2>
+        </a>
+        <a class="excerpt-description" href="{{url}}">
+          {{excerpt words="50"}}
+        </a>
+        {{#if tags}}
+        <div class="top-tags">
+          {{#foreach tags limit="3"}}
+            <a class="tag" href="{{url}}">{{name}}</a>
+          {{/foreach}}
+        </div>
+        {{/if}}
+      </div>
+  </div>
+{{/foreach}}

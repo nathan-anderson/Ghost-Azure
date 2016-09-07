@@ -1,0 +1,22 @@
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .tag {
+    text-transform: uppercase;
+    padding: $small-padding;
+    margin-right: $small-padding*2;
+    margin-bottom: $small-padding*2;
+    text-align: center;
+    color: $tertiary-colour;
+    border: 1px solid $tertiary-colour;
+
+    @include mq-desktop {
+      &:hover {
+        color: $secondary-colour;
+        border-color: $secondary-colour;
+        transition: 0.2s;
+      }
+    };
+  }
+}
